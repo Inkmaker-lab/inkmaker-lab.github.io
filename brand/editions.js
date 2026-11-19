@@ -7,17 +7,17 @@ window.IM_DEVICES = [
 ];
 window.IM_EDITIONS = [
   { id: "dungeon", name: "Dungeon", status: "soon", art: "img/drago.png",
-    line: "Every book is a boss to beat. A sarcastic System AI keeps the score, and a pet grows as you read." },
+    line: "Every book is a boss to beat. Pick a dragon, a dinosaur or an owl, name it and watch it grow as you read, while a sarcastic System AI keeps the score." },
   { id: "cats", name: "Cats", status: "soon", art: "img/gatto.png",
-    line: "You live with a cat now. It talks, it judges your reading, and it sleeps next to a ball of yarn." },
+    line: "Pick your cat: grey, tabby, or black and white. It talks to you in first person, judges your reading and naps next to a ball of yarn." },
   { id: "garden", name: "Garden", status: "soon", art: "img/pianta.png",
-    line: "Your reading grows a plant. Calm, gentle, and it never tells you off." },
+    line: "A little plant in a terracotta pot that grows as you read. A calm almanac voice, a garden shed page with weather and small chores, and it never tells you off." },
   { id: "copilot", name: "Copilot", status: "soon", art: "svg:core",
-    line: "A dry, polite assistant you name yourself, and an energy core that charges with every page." },
+    line: "An on-board instrument, white on black: a big dial with your book and its arrival time, and a dry, polite assistant you name yourself." },
   { id: "desktop", name: "Desktop", status: "soon", art: "svg:disk",
-    line: "An 80s computer desktop: striped windows, a disk with a face, and very serious alert boxes." },
-  { id: "arcade", name: "Arcade", status: "soon", art: "svg:level",
-    line: "Your book as a platform level. Blocks, coins, clouds, and a flag at the end." }
+    line: "An old computer desktop: striped windows, a floppy disk with a face, and the reader's menus in a menu bar on top." },
+  { id: "arcade", name: "Arcade", status: "soon", art: "img/arcade_ninja.png",
+    line: "Your book is a platform level and a small ninja runs to the flag as you read. Plus Star Run, a mini-game of a hundred levels where reading earns you lives." }
 ];
 window.IM_ART = {
   core: '<svg viewBox="0 0 150 150" role="img" aria-label=""><circle cx="75" cy="75" r="68" fill="none" stroke="#141414" stroke-width="3" stroke-dasharray="6 5"/><circle cx="75" cy="75" r="56" fill="none" stroke="#141414" stroke-width="10" stroke-dasharray="246 106" transform="rotate(-90 75 75)"/><circle cx="75" cy="75" r="40" fill="none" stroke="#141414" stroke-width="2"/><polygon points="75,49 97.5,62 97.5,88 75,101 52.5,88 52.5,62" fill="none" stroke="#141414" stroke-width="5"/><rect x="67" y="67" width="16" height="16" fill="#141414"/></svg>',
