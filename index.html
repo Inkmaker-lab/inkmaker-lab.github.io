@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>InkMaker Lab — free mods for e-ink readers</title>
+<meta name="description" content="InkMaker Lab makes free, open firmware editions for Xteink e-readers: a pet that grows as you read, a cat with opinions, a plant, and more.">
+<link rel="icon" type="image/svg+xml" href="brand/icon-dark.svg">
+<link rel="stylesheet" href="brand/brand.css">
+<link rel="stylesheet" href="brand/site.css">
+</head>
+<body data-home="">
+<div class="wrap">
+  <nav class="top">
+    <a class="wm" href="./"><img src="brand/mark.svg" alt=""><span><b>Ink</b>Maker<span class="lab">Lab</span></span></a>
+    <span class="links">
+      <a class="hide-s" href="#editions">Editions</a>
+      <a class="hide-s" href="flash.html">Install</a>
+      <a class="hide-s" href="#about">About</a>
+      <a class="btn red small" data-support href="#support">Buy me a coffee</a>
+    </span>
+  </nav>
+
+  <div class="hero">
+    <div>
+      <h1>Make your e&#8209;reader <em>yours</em></h1>
+      <p class="lead" style="margin-top:20px">InkMaker OS is free firmware for Xteink e-readers, in editions with very different personalities. Pick the one that sounds like you, install it from your browser, and your reader stops being a grey rectangle.</p>
+      <div class="cta">
+        <a class="btn" href="#editions">See the editions</a>
+        <a class="btn ghost" href="flash.html">How to install</a>
+      </div>
+    </div>
+    <figure class="device">
+      <img src="img/schermo_cats.png" width="528" height="792" alt="The Cats edition home screen: a large clock, a kitten with a speech bubble saying it is offended, and the current book at 26 percent.">
+      <figcaption style="color:#b9b5a9">Cats edition, captured from a real X3</figcaption>
+    </figure>
+  </div>
+</div>
+
+<section id="editions"><div class="wrap">
+  <h2>The editions</h2>
+  <p class="sub">Same reader underneath, six different worlds on top. They are all in the workshop right now: none can be installed yet.</p>
+  <div class="editions" id="editions-list-wrap"><div id="editions" style="display:contents"></div></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>What every edition does</h2>
+  <div class="two">
+    <div>
+      <p>Underneath, it is still a complete reader: EPUB and text files, bookmarks, a dictionary, Wi-Fi transfer. That part is <a href="https://github.com/crosspoint-reader/crosspoint-reader">CrossPoint Reader</a>, an open project this work is built on.</p>
+      <p>On top, each edition gives your reading a shape. Something that grows when you read and notices when you do not. Milestones, a daily goal you set yourself, a sleep screen worth looking at.</p>
+    </div>
+    <ul class="plain">
+      <li><b>Free and open.</b> No account, no ads, no tracking. The source code is public.</li>
+      <li><b>Your books stay.</b> Installing only replaces the reader's software. The memory card is not touched.</li>
+      <li><b>Reversible.</b> You can go back to the previous firmware with the same cable.</li>
+      <li><b>English and Italian.</b> Each edition comes in both.</li>
+    </ul>
+  </div>
+</div></section>
+
+<section id="about"><div class="wrap">
+  <h2>Who makes this</h2>
+  <div class="two">
+    <div>
+      <p>One person and an AI. I bring the ideas, the testing and a 3D printer; Claude writes the code with me. I think that is worth saying openly.</p>
+      <p>Next to the software I am designing 3D-printed add-ons for e-ink readers: stands, grips, cases. The files will be free too.</p>
+    </div>
+    <div class="cta" style="display:flex;gap:12px;flex-wrap:wrap;align-content:start">
+      <a class="btn ghost" data-link="instagram" href="#" hidden>Instagram</a>
+      <a class="btn ghost" data-link="github" href="#" hidden>Source code</a>
+      <a class="btn ghost" data-link="makerworld" href="#" hidden>3D prints</a>
+      <a class="btn ghost" href="links/">All links</a>
+    </div>
+  </div>
+</div></section>
+
+<section class="support" id="support"><div class="wrap">
+  <div>
+    <h2>Everything here is free. Coffee keeps it going.</h2>
+    <p>Support pays for the artwork of new editions, for test devices and for filament. And it tells me to keep going.</p>
+  </div>
+  <div>
+    <a class="btn red" data-support href="#support">Buy me a coffee</a>
+    <p class="note" data-support-note>Donations open soon.</p>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <p>Independent project. Not affiliated with Xteink, E Ink Corporation or any device maker. Characters, artwork and writing are original.</p>
+  <p>Built on <a href="https://github.com/crosspoint-reader/crosspoint-reader">CrossPoint Reader</a> and the FreeInk SDK (MIT). The firmware you install includes GPLv3 components. <a data-link="github" href="#" hidden>The full source is public.</a></p>
+</div></footer>
+
+<a class="btn red small float" data-support href="#support">Buy me a coffee</a>
+
+<script src="brand/links.js"></script>
+<script src="brand/editions.js"></script>
+<script src="brand/site.js"></script>
+</body>
+</html>

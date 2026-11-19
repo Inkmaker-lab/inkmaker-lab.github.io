@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>InkMaker Lab — links</title>
+<meta name="description" content="InkMaker Lab: free, open mods for e-ink readers and 3D-printed add-ons. Built by one maker with Claude.">
+<link rel="icon" type="image/svg+xml" href="../brand/icon-dark.svg">
+<link rel="stylesheet" href="../brand/brand.css">
+<script src="../brand/links.js"></script>
+<style>
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; background:var(--paper); color:var(--ink); font:17px/1.55 var(--serif);
+         display:flex; justify-content:center; -webkit-font-smoothing:antialiased; }
+  main { width:100%; max-width:460px; padding:40px 20px 36px; }
+  .top { text-align:center; }
+  .top img.icon { width:96px; height:96px; display:block; margin:0 auto 18px; }
+  h1 { font:400 30px/1 var(--mono); letter-spacing:-.02em; margin:0 0 12px; }
+  h1 b { font-weight:800; }
+  .tagline { font-family:var(--mono); font-weight:700; font-size:13px; letter-spacing:.12em; text-transform:uppercase; margin:0 0 14px; }
+  .bio { margin:0 auto 10px; max-width:24em; }
+  .wip { display:inline-block; font:700 12px var(--mono); letter-spacing:.12em; text-transform:uppercase;
+         border:2px dashed var(--ink); padding:3px 9px; margin:6px 0 26px; }
+  .list { display:grid; gap:12px; }
+  a.row, div.row { display:flex; align-items:center; justify-content:space-between; gap:14px; text-decoration:none; color:var(--ink);
+         border:2px solid var(--ink); background:var(--card); padding:15px 16px; }
+  .row .t { font:700 15.5px/1.25 var(--mono); letter-spacing:.02em; text-transform:uppercase; }
+  .row .d { display:block; font:400 14.5px/1.35 var(--serif); color:var(--mid); text-transform:none; letter-spacing:0; margin-top:3px; }
+  .row .go { font:700 18px var(--mono); flex:none; }
+  a.row:hover { transform:translate(-1px,-1px); box-shadow:4px 4px 0 var(--ink); }
+  a.row.red { background:var(--red); color:#fff; }
+  a.row.red .d { color:#fff; opacity:.92; }
+  div.row { border-style:dashed; background:transparent; color:var(--mid); }
+  div.row .go { font-size:11px; letter-spacing:.1em; }
+  footer { margin-top:28px; text-align:center; font-size:13.5px; color:var(--mid); }
+  footer p { margin:0 0 6px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <img class="icon" src="../brand/icon-dark.svg" alt="InkMaker Lab logo">
+    <h1><b>Ink</b>Maker<span class="lab">Lab</span></h1>
+    <p class="tagline">Make your e-reader yours</p>
+    <p class="bio">Free, open mods for e-ink readers and 3D-printed add-ons. One maker, plus Claude as co-pilot.</p>
+    <span class="wip">Work in progress</span>
+  </div>
+
+  <div class="list" id="list"></div>
+
+  <footer>
+    <p>Independent project. Not affiliated with any device maker.</p>
+    <p>Everything here is free. Coffee keeps it going.</p>
+  </footer>
+</main>
+
+<script>
+  (function () {
+    var L = window.CI_LINKS || {};
+    var rows = [
+      { t: "InkMaker OS",      d: "Free firmware for the Xteink X3. See the editions and install it.", url: "../", always: true },
+      { t: "Make a donation",  d: "Everything is free. A coffee pays for artwork and filament.", url: L.donate, red: true },
+      { t: "3D prints",        d: "Stands, cases and add-ons for e-readers, on MakerWorld.", url: L.makerworld },
+      { t: "Reddit",           d: "Updates, questions and the story behind the builds.", url: L.reddit },
+      { t: "Source code",      d: "It is all open. Read it, fork it, improve it.", url: L.github }
+    ];
+    var list = document.getElementById("list");
+    rows.forEach(function (r) {
+      var live = !!r.url;
+      var el = document.createElement(live ? "a" : "div");
+      el.className = "row" + (live && r.red ? " red" : "");
+      if (live) { el.href = r.url; if (!r.always) { el.target = "_blank"; el.rel = "noopener"; } }
+      var txt = document.createElement("span"); txt.className = "t"; txt.textContent = r.t;
+      var d = document.createElement("span"); d.className = "d"; d.textContent = r.d; txt.appendChild(d);
+      var go = document.createElement("span"); go.className = "go"; go.textContent = live ? "→" : "COMING SOON";
+      el.appendChild(txt); el.appendChild(go); list.appendChild(el);
+    });
+  })();
+</script>
+</body>
+</html>

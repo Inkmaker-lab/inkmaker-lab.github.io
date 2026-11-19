@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Install — InkMaker Lab</title>
+<meta name="description" content="Install an InkMaker OS edition on your Xteink X3 or X4 from the browser.">
+<link rel="icon" type="image/svg+xml" href="brand/icon-dark.svg">
+<link rel="stylesheet" href="brand/brand.css">
+<link rel="stylesheet" href="brand/site.css">
+<script type="module" src="https://unpkg.com/esp-web-tools@10.1.1/dist/web/install-button.js?module"></script>
+</head>
+<body data-home="index.html">
+<div class="wrap">
+  <nav class="top">
+    <a class="wm" href="./"><img src="brand/mark.svg" alt=""><span><b>Ink</b>Maker<span class="lab">Lab</span></span></a>
+    <span class="links">
+      <a class="hide-s" href="index.html#editions">Editions</a>
+      <a class="hide-s" href="flash.html" aria-current="page">Install</a>
+      <a class="hide-s" href="index.html#about">About</a>
+      <a class="btn red small" data-support href="index.html#support">Buy me a coffee</a>
+    </span>
+  </nav>
+
+  <div style="padding:26px 0 30px">
+    <h1>Install</h1>
+    <p class="lead" style="margin-top:16px">It installs from this page, with nothing to download. You need a computer with Chrome or Edge and a USB-C cable that carries data.</p>
+    <div class="callout"><b>Not open yet.</b> The editions are still being tested, so the install button is off for now. This page already works the way it will: pick your reader, your edition and your language.</div>
+  </div>
+</div>
+
+<section><div class="wrap">
+  <form id="chooser" onsubmit="return false">
+    <div class="step">
+      <h3><span>1</span>Your reader</h3>
+      <div class="pick cols2" id="devices"></div>
+    </div>
+    <div class="step">
+      <h3><span>2</span>The edition</h3>
+      <div class="pick cols3" id="eds"></div>
+    </div>
+    <div class="step">
+      <h3><span>3</span>The language</h3>
+      <div class="pick cols2">
+        <label class="opt"><input type="radio" name="lang" value="en" checked><b>English</b><small>Menus, messages and quotes in English</small></label>
+        <label class="opt"><input type="radio" name="lang" value="it"><b>Italiano</b><small>Menu, messaggi e citazioni in italiano</small></label>
+      </div>
+    </div>
+    <div class="step">
+      <h3><span>4</span>Install</h3>
+      <div class="go" id="go"></div>
+    </div>
+  </form>
+</div></section>
+
+<section><div class="wrap">
+  <h2>How it goes</h2>
+  <div class="two">
+    <ul class="plain">
+      <li><b>Plug in and wake up.</b> Connect the reader to the computer and make sure its screen is on.</li>
+      <li><b>Pick the port.</b> In the browser dialog choose the reader's USB port, usually "USB JTAG/serial debug unit".</li>
+      <li><b>Wait two minutes.</b> Do not unplug while it writes. The reader restarts on its own.</li>
+      <li><b>Say hello.</b> On first start you choose your companion and give it a name.</li>
+    </ul>
+    <div>
+      <div class="callout" style="margin-top:0"><b>Your books stay.</b> Installing does not touch the memory card. It only replaces the reader's software.</div>
+      <div class="callout"><b>Before you install.</b> This is a hobby project with no warranty: you install it at your own risk. Some units sold on AliExpress have USB flashing locked and cannot be flashed at all.</div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Questions</h2>
+  <div style="margin-top:14px">
+    <details><summary>Can I go back?</summary><p>Yes. Reinstall CrossPoint Reader from its website, or the original Xteink firmware, with the same cable.</p></details>
+    <details><summary>Can I switch edition later?</summary><p>Yes, install another one from this page. Editions share your reading progress, so you do not start again.</p></details>
+    <details><summary>Do I need Wi-Fi?</summary><p>No. It is only used for the weather and to set the clock, once a day, and only on a network you already saved.</p></details>
+    <details><summary>Why is the X4 marked "coming soon"?</summary><p>The X4 has a different screen size and no clock chip, so every screen has to be checked on a real one first.</p></details>
+  </div>
+</div></section>
+
+<section class="support" id="support"><div class="wrap">
+  <div>
+    <h2>Free to install. Coffee keeps it going.</h2>
+    <p>If an edition makes you read a little more, you can support the next one.</p>
+  </div>
+  <div>
+    <a class="btn red" data-support href="index.html#support">Buy me a coffee</a>
+    <p class="note" data-support-note>Donations open soon.</p>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <p>Independent project. Not affiliated with Xteink, E Ink Corporation or any device maker.</p>
+  <p>The firmware includes GPLv3 components. <a data-link="github" href="#" hidden>The full source is public.</a></p>
+</div></footer>
+
+<a class="btn red small float" data-support href="index.html#support">Buy me a coffee</a>
+
+<script src="brand/links.js"></script>
+<script src="brand/editions.js"></script>
+<script src="brand/site.js"></script>
+<script>
+(function () {
+  var D = window.IM_DEVICES, E = window.IM_EDITIONS;
+  var want = new URLSearchParams(location.search).get("edition");
+  function opt(group, o, checked) {
+    var soon = o.status !== "ready";
+    return '<label class="opt"><input type="radio" name="' + group + '" value="' + o.id + '"' + (checked ? " checked" : "") + "><b>" + o.name + "</b><small>" +
+      (soon ? "Coming soon" : (group === "device" ? "Supported" : "Available")) + "</small></label>";
+  }
+  document.getElementById("devices").innerHTML = D.map(function (d, i) { return opt("device", d, i === 0); }).join("");
+  document.getElementById("eds").innerHTML = E.map(function (e, i) { return opt("edition", e, want ? e.id === want : i === 0); }).join("");
+  var form = document.getElementById("chooser"), go = document.getElementById("go");
+  function val(n) { var el = form.querySelector('input[name="' + n + '"]:checked'); return el ? el.value : null; }
+  function find(list, id) { return list.filter(function (x) { return x.id === id; })[0]; }
+  function render() {
+    var d = find(D, val("device")), e = find(E, val("edition")), lang = val("lang");
+    var label = e.name + " · " + d.name + " · " + (lang === "it" ? "Italiano" : "English");
+    if (d.status === "ready" && e.status === "ready") {
+      // Lo stesso file serve X3 e X4: il dispositivo scelto qui decide solo se l'installazione e' aperta.
+      go.innerHTML = '<esp-web-install-button manifest="manifest-' + e.id + "-" + lang + '.json"><button slot="activate">Install ' + e.name +
+        '</button><span slot="unsupported" class="msg">This browser cannot install: use Chrome or Edge on a computer.</span>' +
+        '<span slot="not-allowed" class="msg">A secure page (https) is required.</span></esp-web-install-button><span class="msg">' + label + "</span>";
+    } else {
+      var why = d.status !== "ready" ? d.name + " is not supported yet." : e.name + " is still being tested.";
+      go.innerHTML = '<a class="btn" aria-disabled="true" tabindex="-1">Coming soon</a><span class="msg">' + label + ". " + why + "</span>";
+    }
+  }
+  form.addEventListener("change", render); render();
+})();
+</script>
+</body>
+</html>
