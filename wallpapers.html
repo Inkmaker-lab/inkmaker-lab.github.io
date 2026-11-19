@@ -86,7 +86,8 @@
 <a class="btn red small float" data-support href="#support">Buy me a coffee</a>
 
 <script src="brand/links.js"></script>
-<script src="brand/wallpapers.js?v=9b201b4e"></script>
+<script src="brand/stats.js"></script>
+<script src="brand/wallpapers.js?v=60563db8"></script>
 <script src="brand/site.js"></script>
 <script>
 // Galleria: dispositivo, lingua dei testi, raccolta. Lo stato resta nell'indirizzo (?device=x3&lang=it&c=cats).
@@ -137,8 +138,8 @@
       el.innerHTML = '<a class="frame" href="' + w.png + '" target="_blank" rel="noopener"><img src="' + w.png +
         '" width="528" height="792" loading="lazy" alt="' + w.title + ' wallpaper"></a>' +
         '<div class="meta"><h3>' + w.title + '</h3><span class="tag">' + colName[w.collection] + "</span></div>" +
-        '<div class="dl"><a class="btn small" href="' + w.bmp + '" download="' + file + '.bmp">BMP</a>' +
-        '<a class="btn ghost small" href="' + w.png + '" download="' + file + '.png">PNG</a></div>';
+        '<div class="dl"><a class="btn small" href="' + w.bmp + '" download="' + file + '.bmp" data-count="download/' + w.device + "/" + file + '.bmp" data-count-title="' + w.title + '">BMP</a>' +
+        '<a class="btn ghost small" href="' + w.png + '" download="' + file + '.png" data-count="download/' + w.device + "/" + file + '.png" data-count-title="' + w.title + '">PNG</a></div>';
       grid.appendChild(el);
     });
     document.getElementById("wp-soon").hidden = shown.length > 0;

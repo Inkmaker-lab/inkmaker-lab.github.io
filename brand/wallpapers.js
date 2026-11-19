@@ -28,6 +28,14 @@ window.IM_WALLPAPERS = {
    "name": "3D printing"
   },
   {
+   "id": "cozy",
+   "name": "Cozy reading"
+  },
+  {
+   "id": "pets",
+   "name": "Cats & dogs"
+  },
+  {
    "id": "dungeon",
    "name": "Dungeon"
   },
@@ -137,15 +145,6 @@ window.IM_WALLPAPERS = {
   {
    "device": "x3",
    "collection": "maker",
-   "id": "multiattrezzo_knolling",
-   "lang": null,
-   "title": "Multitool, laid out",
-   "png": "wallpapers/x3/maker/multiattrezzo_knolling.png",
-   "bmp": "wallpapers/x3/maker/multiattrezzo_knolling.bmp"
-  },
-  {
-   "device": "x3",
-   "collection": "maker",
    "id": "multiattrezzo_tavola",
    "lang": null,
    "title": "Every tool, open",
@@ -205,24 +204,6 @@ window.IM_WALLPAPERS = {
    "title": "Filament drawer",
    "png": "wallpapers/x3/stampa3d/s3d_bobine.png",
    "bmp": "wallpapers/x3/stampa3d/s3d_bobine.bmp"
-  },
-  {
-   "device": "x3",
-   "collection": "stampa3d",
-   "id": "s3d_lettore",
-   "lang": null,
-   "title": "Printed stand",
-   "png": "wallpapers/x3/stampa3d/s3d_lettore.png",
-   "bmp": "wallpapers/x3/stampa3d/s3d_lettore.bmp"
-  },
-  {
-   "device": "x3",
-   "collection": "stampa3d",
-   "id": "s3d_piatto",
-   "lang": null,
-   "title": "Fresh off the plate",
-   "png": "wallpapers/x3/stampa3d/s3d_piatto.png",
-   "bmp": "wallpapers/x3/stampa3d/s3d_piatto.bmp"
   },
   {
    "device": "x3",
@@ -427,7 +408,7 @@ window.IM_WALLPAPERS = {
    "collection": "desktop",
    "id": "desktop_scrivania",
    "lang": "en",
-   "title": "Old desktop",
+   "title": "2000s desktop",
    "png": "wallpapers/x3/desktop/desktop_scrivania_en.png",
    "bmp": "wallpapers/x3/desktop/desktop_scrivania_en.bmp"
   },
@@ -436,7 +417,7 @@ window.IM_WALLPAPERS = {
    "collection": "desktop",
    "id": "desktop_scrivania",
    "lang": "it",
-   "title": "Old desktop",
+   "title": "2000s desktop",
    "png": "wallpapers/x3/desktop/desktop_scrivania_it.png",
    "bmp": "wallpapers/x3/desktop/desktop_scrivania_it.bmp"
   },

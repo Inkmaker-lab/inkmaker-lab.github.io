@@ -6,5 +6,6 @@ window.CI_LINKS = {
   github:     "",   // es. "https://github.com/inkmaker-lab/inkmaker-os"
   instagram:  "https://instagram.com/inkmaker.lab",
   makerworld: "https://makerworld.com/@creativeink.lab",
+  goatcounter: "",  // codice dell'account GoatCounter (es. "inkmakerlab"): accende le statistiche anonime (brand/stats.js)
   reddit:     "https://www.reddit.com/user/ZoneStraight/"
 };

@@ -8,6 +8,7 @@
 <link rel="icon" type="image/svg+xml" href="../brand/icon-dark.svg">
 <link rel="stylesheet" href="../brand/brand.css">
 <script src="../brand/links.js"></script>
+<script src="../brand/stats.js"></script>
 <style>
   * { box-sizing:border-box; }
   body { margin:0; min-height:100vh; background:var(--paper); color:var(--ink); font:17px/1.55 var(--serif);
@@ -70,7 +71,7 @@
       var live = !!r.url;
       var el = document.createElement(live ? "a" : "div");
       el.className = "row" + (live && r.red ? " red" : "");
-      if (live) { el.href = r.url; if (!r.always) { el.target = "_blank"; el.rel = "noopener"; } }
+      if (live) { el.href = r.url; el.setAttribute("data-count", "link/" + r.t); if (!r.always) { el.target = "_blank"; el.rel = "noopener"; } }
       var txt = document.createElement("span"); txt.className = "t"; txt.textContent = r.t;
       var d = document.createElement("span"); d.className = "d"; d.textContent = r.d; txt.appendChild(d);
       var go = document.createElement("span"); go.className = "go"; go.textContent = live ? "→" : "COMING SOON";
