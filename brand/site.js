@@ -16,7 +16,7 @@
   if (note) note.hidden = !!L.donate;
 
   // Elenco delle edizioni (pagina principale).
-  var list = document.getElementById("editions");
+  var list = document.getElementById("editions-list");
   if (list && window.IM_EDITIONS) {
     window.IM_EDITIONS.forEach(function (e) {
       var art = e.art.indexOf("svg:") === 0 ? window.IM_ART[e.art.slice(4)] : '<img src="' + e.art + '" alt="" loading="lazy">';

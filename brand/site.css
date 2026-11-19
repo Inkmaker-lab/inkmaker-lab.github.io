@@ -35,7 +35,7 @@ section { padding:52px 0; border-top:2px solid var(--ink); }
 
 /* Editions: a catalogue of rows, not a grid of cards */
 .editions { margin-top:26px; display:grid; grid-template-columns:1fr 1fr; column-gap:36px; }
-.ed { display:grid; grid-template-columns:132px 1fr; gap:20px; align-items:center; padding:22px 0; border-top:1px solid var(--soft); }
+.ed { display:grid; grid-template-columns:132px 1fr; gap:24px; align-items:center; padding:24px 8px; border-top:1px solid var(--soft); }
 .ed:nth-child(-n+2) { border-top:0; }
 .ed .art { height:132px; display:flex; align-items:center; justify-content:center; }
 .ed .art img, .ed .art svg { max-width:100%; max-height:132px; width:auto; height:auto; display:block; }
