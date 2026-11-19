@@ -15,6 +15,8 @@
   window.imCount = code ? send : function () {};
   if (!code) return;
 
+  // Una riga per pagina: senza i filtri nell'indirizzo (?device=...&lang=...).
+  window.goatcounter = { path: function () { return location.pathname; } };
   var s = document.createElement("script");
   s.async = true;
   s.src = "https://gc.zgo.at/count.js";
