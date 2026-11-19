@@ -24,6 +24,10 @@ window.IM_WALLPAPERS = {
    "name": "Maker & nerd"
   },
   {
+   "id": "stampa3d",
+   "name": "3D printing"
+  },
+  {
    "id": "dungeon",
    "name": "Dungeon"
   },
@@ -409,9 +413,5 @@ window.IM_WALLPAPERS = {
    "png": "wallpapers/x3/arcade/arcade_titolo_it.png",
    "bmp": "wallpapers/x3/arcade/arcade_titolo_it.bmp"
   }
- ],
- "zips": {
-  "x3-en": "wallpapers/x3/inkmaker-wallpapers-x3-en.zip",
-  "x3-it": "wallpapers/x3/inkmaker-wallpapers-x3-it.zip"
- }
+ ]
 };
