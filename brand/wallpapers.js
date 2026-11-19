@@ -20,6 +20,10 @@ window.IM_WALLPAPERS = {
    "name": "Illustrated"
   },
   {
+   "id": "maker",
+   "name": "Maker & nerd"
+  },
+  {
    "id": "dungeon",
    "name": "Dungeon"
   },
@@ -98,6 +102,96 @@ window.IM_WALLPAPERS = {
    "title": "Botanical plate",
    "png": "wallpapers/x3/inkmaker/tavola_botanica.png",
    "bmp": "wallpapers/x3/inkmaker/tavola_botanica.bmp"
+  },
+  {
+   "device": "x3",
+   "collection": "maker",
+   "id": "banco_notte",
+   "lang": null,
+   "title": "Workbench at night",
+   "png": "wallpapers/x3/maker/banco_notte.png",
+   "bmp": "wallpapers/x3/maker/banco_notte.bmp"
+  },
+  {
+   "device": "x3",
+   "collection": "maker",
+   "id": "circuito_albero",
+   "lang": null,
+   "title": "Circuit tree",
+   "png": "wallpapers/x3/maker/circuito_albero.png",
+   "bmp": "wallpapers/x3/maker/circuito_albero.bmp"
+  },
+  {
+   "device": "x3",
+   "collection": "maker",
+   "id": "dadi_rpg",
+   "lang": null,
+   "title": "Roll for initiative",
+   "png": "wallpapers/x3/maker/dadi_rpg.png",
+   "bmp": "wallpapers/x3/maker/dadi_rpg.bmp"
+  },
+  {
+   "device": "x3",
+   "collection": "maker",
+   "id": "multiattrezzo_knolling",
+   "lang": null,
+   "title": "Multitool, laid out",
+   "png": "wallpapers/x3/maker/multiattrezzo_knolling.png",
+   "bmp": "wallpapers/x3/maker/multiattrezzo_knolling.bmp"
+  },
+  {
+   "device": "x3",
+   "collection": "maker",
+   "id": "multiattrezzo_tavola",
+   "lang": null,
+   "title": "Every tool, open",
+   "png": "wallpapers/x3/maker/multiattrezzo_tavola.png",
+   "bmp": "wallpapers/x3/maker/multiattrezzo_tavola.bmp"
+  },
+  {
+   "device": "x3",
+   "collection": "maker",
+   "id": "papera_debug",
+   "lang": null,
+   "title": "Debug duck",
+   "png": "wallpapers/x3/maker/papera_debug.png",
+   "bmp": "wallpapers/x3/maker/papera_debug.bmp"
+  },
+  {
+   "device": "x3",
+   "collection": "maker",
+   "id": "parete_attrezzi",
+   "lang": null,
+   "title": "The pegboard",
+   "png": "wallpapers/x3/maker/parete_attrezzi.png",
+   "bmp": "wallpapers/x3/maker/parete_attrezzi.bmp"
+  },
+  {
+   "device": "x3",
+   "collection": "maker",
+   "id": "robot_lettore",
+   "lang": null,
+   "title": "Robot reading",
+   "png": "wallpapers/x3/maker/robot_lettore.png",
+   "bmp": "wallpapers/x3/maker/robot_lettore.bmp"
+  },
+  {
+   "device": "x3",
+   "collection": "maker",
+   "id": "stampante_3d",
+   "lang": null,
+   "title": "Printing a lighthouse",
+   "png": "wallpapers/x3/maker/stampante_3d.png",
+   "bmp": "wallpapers/x3/maker/stampante_3d.bmp"
+  },
+  {
+   "device": "x3",
+   "collection": "maker",
+   "id": "tasto_esploso",
+   "lang": null,
+   "title": "Anatomy of a key",
+   "png": "wallpapers/x3/maker/tasto_esploso.png",
+   "bmp": "wallpapers/x3/maker/tasto_esploso.bmp"
   },
   {
    "device": "x3",
