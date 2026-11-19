@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wallpapers — InkMaker Lab</title>
+<meta name="description" content="Free sleep-screen wallpapers for Xteink e-readers, drawn for 4 shades of grey at the exact screen size. Original artwork, ready-to-copy BMP files.">
+<link rel="icon" type="image/svg+xml" href="brand/icon-dark.svg">
+<link rel="stylesheet" href="brand/brand.css">
+<link rel="stylesheet" href="brand/site.css">
+</head>
+<body data-home="index.html">
+<div class="wrap">
+  <nav class="top">
+    <a class="wm" href="./"><img src="brand/mark.svg" alt=""><span><b>Ink</b>Maker<span class="lab">Lab</span></span></a>
+    <span class="links">
+      <a class="hide-s" href="index.html#editions">Editions</a>
+      <a class="hide-s" href="wallpapers.html" aria-current="page">Wallpapers</a>
+      <a class="hide-s" href="flash.html">Install</a>
+      <a class="btn red small" data-support href="#support">Buy me a coffee</a>
+    </span>
+  </nav>
+
+  <header class="wp-head">
+    <h1>Sleep screens, <em>made for ink</em></h1>
+    <p class="lead" style="margin-top:18px">Free wallpapers drawn at the exact size of your reader's screen and in its own four shades of grey, so nothing gets blurred or dithered on the way. Original artwork, ready to copy to the memory card.</p>
+  </header>
+
+  <div class="wp-controls">
+    <fieldset>
+      <legend>Device</legend>
+      <div class="pick cols2" id="wp-devices"></div>
+    </fieldset>
+    <fieldset>
+      <legend>Text in</legend>
+      <div class="pick cols2" id="wp-langs">
+        <label class="opt"><input type="radio" name="lang" value="en" checked><b>English</b></label>
+        <label class="opt"><input type="radio" name="lang" value="it"><b>Italiano</b></label>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="wp-bar">
+    <div class="chips" id="wp-chips" role="group" aria-label="Collections"></div>
+    <a class="btn ghost small" id="wp-zip" href="#" download>Download all (.zip)</a>
+  </div>
+  <p class="wp-count" id="wp-count" aria-live="polite"></p>
+
+  <div class="wp-grid" id="wp-grid"></div>
+  <div class="callout" id="wp-soon" hidden><b>Coming soon.</b> Wallpapers for this reader are in the workshop. The X3 set is ready now.</div>
+</div>
+
+<section id="how"><div class="wrap">
+  <h2>How to use them</h2>
+  <div class="two">
+    <ol class="steps">
+      <li><b>Copy.</b> Put the <code>.bmp</code> files in a folder called <code>sleep</code> at the top of the memory card (the zip already contains it). Use the Wi-Fi transfer or a card reader.</li>
+      <li><b>Switch on.</b> On the reader: Settings → Display → Sleep Screen → <b>Custom</b>.</li>
+      <li><b>Sleep.</b> Every time the reader goes to sleep it picks one at random.</li>
+    </ol>
+    <ul class="plain">
+      <li><b>Want only one?</b> Name it <code>sleep.bmp</code> and put it at the top of the card: it always wins over the folder.</li>
+      <li><b>Which firmware?</b> Works on CrossPoint Reader and on every InkMaker OS edition. Other firmware may use a different folder.</li>
+      <li><b>Why BMP?</b> These are 2-bit files with the reader's own four greys: they show exactly as designed, and each one is about 100&nbsp;KB.</li>
+      <li><b>The PNG</b> is the same picture, for your phone or for sharing.</li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="support" id="support"><div class="wrap">
+  <div>
+    <h2>Free to download. Coffee keeps them coming.</h2>
+    <p>Every new set takes hours of drawing and testing on a real screen. If one ends up on your reader, a coffee says thanks.</p>
+  </div>
+  <div>
+    <a class="btn red" data-support href="#support">Buy me a coffee</a>
+    <p class="note" data-support-note>Donations open soon.</p>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <p>All wallpapers are original artwork by InkMaker Lab, free for personal use on your own devices. Please do not resell them or re-upload them as your own.</p>
+  <p>Independent project. Not affiliated with Xteink, E Ink Corporation or any device maker.</p>
+</div></footer>
+
+<a class="btn red small float" data-support href="#support">Buy me a coffee</a>
+
+<script src="brand/links.js"></script>
+<script src="brand/wallpapers.js"></script>
+<script src="brand/site.js"></script>
+<script>
+// Galleria: dispositivo, lingua dei testi, raccolta. Lo stato resta nell'indirizzo (?device=x3&lang=it&c=cats).
+(function () {
+  var D = window.IM_WALLPAPERS; if (!D) return;
+  var q = new URLSearchParams(location.search);
+  var st = { device: q.get("device") || "x3", lang: q.get("lang") || "en", c: q.get("c") || "all" };
+  var colName = {}; D.collections.forEach(function (c) { colName[c.id] = c.name; });
+
+  var devBox = document.getElementById("wp-devices");
+  D.devices.forEach(function (d) {
+    var ready = d.status === "ready";
+    devBox.insertAdjacentHTML("beforeend", '<label class="opt"><input type="radio" name="device" value="' + d.id + '"' +
+      (ready ? "" : " disabled") + '><b>' + d.name + "</b><small>" + d.res + (ready ? "" : " · coming soon") + "</small></label>");
+  });
+  if (!D.devices.some(function (d) { return d.id === st.device && d.status === "ready"; })) st.device = "x3";
+
+  function sync() {
+    document.querySelectorAll('input[name="device"]').forEach(function (i) { i.checked = i.value === st.device; });
+    document.querySelectorAll('input[name="lang"]').forEach(function (i) { i.checked = i.value === st.lang; });
+    var p = new URLSearchParams(); p.set("device", st.device); p.set("lang", st.lang); if (st.c !== "all") p.set("c", st.c);
+    history.replaceState(null, "", "?" + p.toString());
+    render();
+  }
+  document.addEventListener("change", function (e) {
+    if (e.target.name === "device" || e.target.name === "lang") { st[e.target.name] = e.target.value; sync(); }
+  });
+
+  function render() {
+    var list = D.items.filter(function (w) { return w.device === st.device && (!w.lang || w.lang === st.lang); });
+    var chips = document.getElementById("wp-chips"); chips.innerHTML = "";
+    var present = D.collections.filter(function (c) { return list.some(function (w) { return w.collection === c.id; }); });
+    if (st.c !== "all" && !present.some(function (c) { return c.id === st.c; })) st.c = "all";
+    [{ id: "all", name: "All" }].concat(present).forEach(function (c) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "chip"; b.textContent = c.name;
+      b.setAttribute("aria-pressed", String(st.c === c.id));
+      b.onclick = function () { st.c = c.id; sync(); };
+      chips.appendChild(b);
+    });
+    var shown = list.filter(function (w) { return st.c === "all" || w.collection === st.c; });
+    var grid = document.getElementById("wp-grid"); grid.innerHTML = "";
+    shown.forEach(function (w) {
+      var file = w.id + (w.lang ? "_" + w.lang : "");
+      var el = document.createElement("article");
+      el.className = "wp";
+      el.innerHTML = '<a class="frame" href="' + w.png + '" target="_blank" rel="noopener"><img src="' + w.png +
+        '" width="528" height="792" loading="lazy" alt="' + w.title + ' wallpaper"></a>' +
+        '<div class="meta"><h3>' + w.title + '</h3><span class="tag">' + colName[w.collection] + "</span></div>" +
+        '<div class="dl"><a class="btn small" href="' + w.bmp + '" download="' + file + '.bmp">BMP</a>' +
+        '<a class="btn ghost small" href="' + w.png + '" download="' + file + '.png">PNG</a></div>';
+      grid.appendChild(el);
+    });
+    var zip = D.zips[st.device + "-" + st.lang];
+    var z = document.getElementById("wp-zip"); z.hidden = !zip; if (zip) z.href = zip;
+    document.getElementById("wp-soon").hidden = shown.length > 0;
+    document.getElementById("wp-count").textContent = shown.length + (shown.length === 1 ? " wallpaper" : " wallpapers");
+  }
+  if (q.get("c")) st.c = q.get("c");
+  sync();
+})();
+</script>
+</body>
+</html>
