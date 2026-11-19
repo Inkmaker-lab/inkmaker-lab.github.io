@@ -199,6 +199,69 @@ window.IM_WALLPAPERS = {
   },
   {
    "device": "x3",
+   "collection": "stampa3d",
+   "id": "s3d_bobine",
+   "lang": null,
+   "title": "Filament drawer",
+   "png": "wallpapers/x3/stampa3d/s3d_bobine.png",
+   "bmp": "wallpapers/x3/stampa3d/s3d_bobine.bmp"
+  },
+  {
+   "device": "x3",
+   "collection": "stampa3d",
+   "id": "s3d_lettore",
+   "lang": null,
+   "title": "Printed stand",
+   "png": "wallpapers/x3/stampa3d/s3d_lettore.png",
+   "bmp": "wallpapers/x3/stampa3d/s3d_lettore.bmp"
+  },
+  {
+   "device": "x3",
+   "collection": "stampa3d",
+   "id": "s3d_piatto",
+   "lang": null,
+   "title": "Fresh off the plate",
+   "png": "wallpapers/x3/stampa3d/s3d_piatto.png",
+   "bmp": "wallpapers/x3/stampa3d/s3d_piatto.bmp"
+  },
+  {
+   "device": "x3",
+   "collection": "stampa3d",
+   "id": "s3d_stampante",
+   "lang": null,
+   "title": "The little printer",
+   "png": "wallpapers/x3/stampa3d/s3d_stampante.png",
+   "bmp": "wallpapers/x3/stampa3d/s3d_stampante.bmp"
+  },
+  {
+   "device": "x3",
+   "collection": "stampa3d",
+   "id": "s3d_strati",
+   "lang": null,
+   "title": "Watching it grow",
+   "png": "wallpapers/x3/stampa3d/s3d_strati.png",
+   "bmp": "wallpapers/x3/stampa3d/s3d_strati.bmp"
+  },
+  {
+   "device": "x3",
+   "collection": "stampa3d",
+   "id": "s3d_ugello",
+   "lang": null,
+   "title": "Layer by layer",
+   "png": "wallpapers/x3/stampa3d/s3d_ugello.png",
+   "bmp": "wallpapers/x3/stampa3d/s3d_ugello.bmp"
+  },
+  {
+   "device": "x3",
+   "collection": "stampa3d",
+   "id": "s3d_ugello_esploso",
+   "lang": null,
+   "title": "Anatomy of a hotend",
+   "png": "wallpapers/x3/stampa3d/s3d_ugello_esploso.png",
+   "bmp": "wallpapers/x3/stampa3d/s3d_ugello_esploso.bmp"
+  },
+  {
+   "device": "x3",
    "collection": "dungeon",
    "id": "dungeon_mappa",
    "lang": "en",
