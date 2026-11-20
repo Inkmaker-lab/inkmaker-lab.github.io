@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edition — InkMaker Lab</title>
+<meta name="description" content="An InkMaker OS edition for Xteink e-readers: what it looks like on a real X3 and how to install it.">
+<link rel="icon" type="image/svg+xml" href="brand/icon-dark.svg">
+<link rel="stylesheet" href="brand/brand.css?v=e82a3b9a">
+<link rel="stylesheet" href="brand/site.css?v=e07f1845">
+</head>
+<body data-home="index.html">
+<div class="wrap">
+  <nav class="top">
+    <a class="wm" href="./"><img src="brand/mark.svg" alt=""><span><b>Ink</b>Maker<span class="lab">Lab</span></span></a>
+    <span class="links">
+      <a class="hide-s" href="index.html#editions">Editions</a>
+      <a class="hide-s" href="wallpapers.html">Wallpapers</a>
+      <a class="hide-s" href="flash.html">Install</a>
+      <a class="hide-s" href="index.html#about">About</a>
+      <a class="btn red small" data-support href="index.html#support">Buy me a coffee</a>
+    </span>
+  </nav>
+
+  <p class="crumbs"><a href="index.html#editions">← All editions</a></p>
+  <div class="ed-hero">
+    <div>
+      <p class="kicker" id="ed-kicker">InkMaker OS edition</p>
+      <h1 id="ed-title"></h1>
+      <p class="lead" id="ed-intro" style="margin-top:20px"></p>
+      <div class="cta" id="ed-cta"></div>
+    </div>
+    <div class="ed-hero-art" id="ed-art" aria-hidden="true"></div>
+  </div>
+</div>
+
+<section><div class="wrap">
+  <h2>On a real X3</h2>
+  <p class="sub">Screenshots taken from the reader itself, in English. Book covers are hidden.</p>
+  <div class="shots" id="ed-shots"></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>What is inside</h2>
+  <div class="two">
+    <ul class="plain" id="ed-points"></ul>
+    <div>
+      <h3 id="ed-cast-title" style="font-size:17px"></h3>
+      <div class="cast" id="ed-cast"></div>
+      <div class="callout"><b>Same reader underneath.</b> EPUB and text files, bookmarks, a dictionary and Wi-Fi transfer: that part is <a href="https://github.com/crosspoint-reader/crosspoint-reader">CrossPoint Reader</a>, an open project this work is built on.</div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Install it</h2>
+  <div class="two">
+    <ol class="steps">
+      <li><b>Plug in.</b> Connect the X3 to a computer with a USB-C cable that carries data, and wake it up.</li>
+      <li><b>Open the install page</b> in Chrome or Edge and pick this edition and your language.</li>
+      <li><b>Press Install</b> and choose the reader's USB port. Wait about two minutes without unplugging.</li>
+      <li><b>Say hello.</b> The reader restarts on its own. Your books on the card are not touched.</li>
+    </ol>
+    <div>
+      <div id="ed-install"></div>
+      <div class="callout"><b>Before you install.</b> A hobby project with no warranty: you install it at your own risk. You can always go back to CrossPoint Reader or the original firmware with the same cable.</div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>The other editions</h2>
+  <div class="others" id="ed-others"></div>
+</div></section>
+
+<section class="support" id="support"><div class="wrap">
+  <div>
+    <h2>Free to install. Coffee keeps it going.</h2>
+    <p>Support pays for the artwork of new editions, for test devices and for filament.</p>
+  </div>
+  <div>
+    <a class="btn red" data-support href="index.html#support">Buy me a coffee</a>
+    <p class="note" data-support-note>Donations open soon.</p>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <p>Independent project. Not affiliated with Xteink, E Ink Corporation or any device maker. Characters, artwork and writing are original.</p>
+  <p>Built on <a href="https://github.com/crosspoint-reader/crosspoint-reader">CrossPoint Reader</a> and the FreeInk SDK (MIT). The firmware you install includes GPLv3 components. <a data-link="github" href="#" hidden>The full source is public.</a></p>
+</div></footer>
+
+<a class="btn red small float" data-support href="index.html#support">Buy me a coffee</a>
+
+<script src="brand/links.js?v=be529c7a"></script>
+<script src="brand/stats.js?v=5b1cbf52"></script>
+<script src="brand/editions.js?v=e28bb3c6"></script>
+<script src="brand/edition-pages.js?v=787236bb"></script>
+<script src="brand/site.js?v=7d512b0b"></script>
+<script>
+(function () {
+  var E = window.IM_EDITIONS, P = window.IM_EDITION_PAGES, ART = window.IM_ART;
+  var id = new URLSearchParams(location.search).get("e");
+  var e = E.filter(function (x) { return x.id === id; })[0] || E[0];
+  var p = P[e.id] || {};
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function marked(t) { return esc(t).replace(/\*(.+?)\*/g, "<em>$1</em>"); }
+  function art(src, alt) { return src.indexOf("svg:") === 0 ? ART[src.slice(4)] : '<img src="' + src + '" alt="' + esc(alt || "") + '">'; }
+
+  document.title = e.name + " edition — InkMaker Lab";
+  document.getElementById("ed-kicker").textContent = "InkMaker OS · " + e.name + " edition";
+  document.getElementById("ed-title").innerHTML = marked(p.tagline || e.name);
+  document.getElementById("ed-intro").textContent = p.intro || e.line;
+  document.getElementById("ed-art").innerHTML = art(e.art, "");
+
+  // Schermate vere
+  var names = { home: "Home", page2: "Second page", apps: "Apps", stats: "Stats", sleep: "Sleep screen" };
+  document.getElementById("ed-shots").innerHTML = Object.keys(p.screens || {}).map(function (k) {
+    return '<figure class="shot"><div class="device"><img src="img/edizioni/' + e.id + "/" + k + '.png" width="528" height="792" loading="lazy" alt="' +
+      esc(e.name + " edition, " + names[k] + ": " + p.screens[k]) + '"></div><figcaption><b>' + names[k] + "</b>" + esc(p.screens[k]) + "</figcaption></figure>";
+  }).join("");
+
+  document.getElementById("ed-points").innerHTML = (p.points || []).map(function (x) {
+    return "<li><b>" + esc(x[0]) + ".</b> " + esc(x[1]) + "</li>";
+  }).join("");
+  if (p.cast) {
+    document.getElementById("ed-cast-title").textContent = p.cast.title;
+    document.getElementById("ed-cast").innerHTML = p.cast.items.map(function (c) {
+      return '<figure><div class="art">' + art(c[0], c[1]) + "</div><figcaption><b>" + esc(c[1]) + "</b>" + esc(c[2]) + "</figcaption></figure>";
+    }).join("");
+  }
+
+  // Installazione: il pulsante si accende solo se i file dell'edizione sono davvero sul sito.
+  var cta = document.getElementById("ed-cta"), box = document.getElementById("ed-install");
+  var flash = "flash.html?edition=" + e.id;
+  function setInstall(ready) {
+    cta.innerHTML = (ready ? '<a class="btn" href="' + flash + '" data-count="install-page/' + e.id + '">Install ' + esc(e.name) + "</a>"
+                           : '<a class="btn" aria-disabled="true" tabindex="-1">Coming soon</a>') +
+      '<a class="btn ghost" href="#' + 'ed-shots">See the screens</a>';
+    box.innerHTML = ready
+      ? '<a class="btn red" href="' + flash + '">Go to the install page</a><p class="sub">English and Italian.</p>'
+      : '<div class="callout" style="margin-top:0"><b>Coming soon.</b> ' + esc(e.name) + " is still being tested on real readers. The install page already works the way it will.</div>" +
+        '<p style="margin-top:14px"><a class="btn ghost" href="' + flash + '">See the install page</a></p>';
+  }
+  setInstall(false);
+  fetch("manifest-" + e.id + "-en.json", { method: "HEAD", cache: "no-store" })
+    .then(function (r) { setInstall(r.ok); }).catch(function () {});
+
+  // Le altre edizioni
+  document.getElementById("ed-others").innerHTML = E.filter(function (x) { return x.id !== e.id; }).map(function (x) {
+    return '<a class="other" href="edition.html?e=' + x.id + '"><span class="art">' + art(x.art, "") + "</span><b>" + esc(x.name) + "</b></a>";
+  }).join("");
+})();
+</script>
+</body>
+</html>

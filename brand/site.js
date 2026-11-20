@@ -23,9 +23,11 @@
       var ready = e.status === "ready";
       var el = document.createElement("article");
       el.className = "ed";
-      el.innerHTML = '<div class="art">' + art + "</div><div><h3>" + e.name + "</h3><p>" + e.line + '</p><div class="row">' +
+      var page = "edition.html?e=" + e.id;
+      el.innerHTML = '<a class="art" href="' + page + '" tabindex="-1" aria-hidden="true">' + art + '</a><div><h3><a href="' + page + '">' + e.name + "</a></h3><p>" + e.line + '</p><div class="row">' +
         '<span class="tag' + (ready ? " ready" : "") + '">' + (ready ? "Available" : "Coming soon") + "</span>" +
-        '<a class="btn small" ' + (ready ? 'href="flash.html?edition=' + e.id + '"' : 'aria-disabled="true" tabindex="-1"') + ">Install</a></div></div>";
+        '<a class="btn small" href="' + page + '">See it</a>' +
+        (ready ? '<a class="btn small ghost" href="flash.html?edition=' + e.id + '">Install</a>' : "") + "</div></div>";
       list.appendChild(el);
     });
   }

@@ -7,7 +7,7 @@
 <meta name="description" content="Install an InkMaker OS edition on your Xteink X3 or X4 from the browser.">
 <link rel="icon" type="image/svg+xml" href="brand/icon-dark.svg">
 <link rel="stylesheet" href="brand/brand.css?v=e82a3b9a">
-<link rel="stylesheet" href="brand/site.css?v=38dd5513">
+<link rel="stylesheet" href="brand/site.css?v=e07f1845">
 <script type="module" src="https://unpkg.com/esp-web-tools@10.1.1/dist/web/install-button.js?module"></script>
 </head>
 <body data-home="index.html">
@@ -26,7 +26,7 @@
   <div style="padding:26px 0 30px">
     <h1>Install</h1>
     <p class="lead" style="margin-top:16px">It installs from this page, with nothing to download. You need a computer with Chrome or Edge and a USB-C cable that carries data.</p>
-    <div class="callout"><b>Not open yet.</b> The editions are still being tested, so the install button is off for now. This page already works the way it will: pick your reader, your edition and your language.</div>
+    <div class="callout" id="not-open"><b>Not open yet.</b> The editions are still being tested, so the install button is off for now. This page already works the way it will: pick your reader, your edition and your language.</div>
   </div>
 </div>
 
@@ -101,7 +101,7 @@
 <script src="brand/links.js?v=be529c7a"></script>
 <script src="brand/stats.js?v=5b1cbf52"></script>
 <script src="brand/editions.js?v=e28bb3c6"></script>
-<script src="brand/site.js?v=9298401a"></script>
+<script src="brand/site.js?v=7d512b0b"></script>
 <script>
 (function () {
   var D = window.IM_DEVICES, E = window.IM_EDITIONS;
@@ -119,17 +119,35 @@
   function render() {
     var d = find(D, val("device")), e = find(E, val("edition")), lang = val("lang");
     var label = e.name + " · " + d.name + " · " + (lang === "it" ? "Italiano" : "English");
-    if (d.status === "ready" && e.status === "ready") {
+    if (d.status === "ready" && avail[e.id + "-" + lang]) {
       // Lo stesso file serve X3 e X4: il dispositivo scelto qui decide solo se l'installazione e' aperta.
       go.innerHTML = '<esp-web-install-button manifest="manifest-' + e.id + "-" + lang + '.json"><button slot="activate">Install ' + e.name +
         '</button><span slot="unsupported" class="msg">This browser cannot install: use Chrome or Edge on a computer.</span>' +
         '<span slot="not-allowed" class="msg">A secure page (https) is required.</span></esp-web-install-button><span class="msg">' + label + "</span>";
     } else {
-      var why = d.status !== "ready" ? d.name + " is not supported yet." : e.name + " is still being tested.";
+      var why = d.status !== "ready" ? d.name + " is not supported yet." : (checked ? e.name + " is still being tested." : "Checking…");
       go.innerHTML = '<a class="btn" aria-disabled="true" tabindex="-1">Coming soon</a><span class="msg">' + label + ". " + why + "</span>";
     }
   }
+  // Un'edizione e' installabile solo se il suo manifest e' sul sito (02_EDIZIONI/strumenti/porta_nel_sito.sh lo crea;
+  // online i file non vengono pubblicati finche' il codice sorgente non e' su GitHub).
+  var avail = {}, checked = false;
   form.addEventListener("change", render); render();
+  Promise.all(E.map(function (e) {
+    return Promise.all(["en", "it"].map(function (l) {
+      return fetch("manifest-" + e.id + "-" + l + ".json", { method: "HEAD", cache: "no-store" })
+        .then(function (r) { avail[e.id + "-" + l] = r.ok; }).catch(function () {});
+    }));
+  })).then(function () {
+    checked = true;
+    var any = Object.keys(avail).some(function (k) { return avail[k]; });
+    document.getElementById("not-open").hidden = any;
+    document.querySelectorAll('input[name="edition"]').forEach(function (i) {
+      var on = avail[i.value + "-en"] || avail[i.value + "-it"];
+      var sm = i.parentNode.querySelector("small"); if (sm) sm.textContent = on ? "Available" : "Coming soon";
+    });
+    render();
+  });
 })();
 </script>
 </body>
