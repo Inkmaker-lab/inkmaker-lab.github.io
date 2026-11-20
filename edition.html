@@ -94,6 +94,7 @@
 <script src="brand/links.js?v=be529c7a"></script>
 <script src="brand/stats.js?v=5b1cbf52"></script>
 <script src="brand/editions.js?v=e28bb3c6"></script>
+<script src="brand/firmware.js?v=f33af162"></script>
 <script src="brand/edition-pages.js?v=787236bb"></script>
 <script src="brand/site.js?v=7d512b0b"></script>
 <script>
@@ -129,7 +130,7 @@
     }).join("");
   }
 
-  // Installazione: il pulsante si accende solo se i file dell'edizione sono davvero sul sito.
+  // Installazione: il pulsante si accende solo se l'edizione e' in brand/firmware.js (online la lista e' vuota).
   var cta = document.getElementById("ed-cta"), box = document.getElementById("ed-install");
   var flash = "flash.html?edition=" + e.id;
   function setInstall(ready) {
@@ -141,9 +142,8 @@
       : '<div class="callout" style="margin-top:0"><b>Coming soon.</b> ' + esc(e.name) + " is still being tested on real readers. The install page already works the way it will.</div>" +
         '<p style="margin-top:14px"><a class="btn ghost" href="' + flash + '">See the install page</a></p>';
   }
-  setInstall(false);
-  fetch("manifest-" + e.id + "-en.json", { method: "HEAD", cache: "no-store" })
-    .then(function (r) { setInstall(r.ok); }).catch(function () {});
+  var fw = window.IM_FIRMWARE || [];
+  setInstall(fw.indexOf(e.id + "-en") >= 0 || fw.indexOf(e.id + "-it") >= 0);
 
   // Le altre edizioni
   document.getElementById("ed-others").innerHTML = E.filter(function (x) { return x.id !== e.id; }).map(function (x) {

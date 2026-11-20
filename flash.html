@@ -101,6 +101,7 @@
 <script src="brand/links.js?v=be529c7a"></script>
 <script src="brand/stats.js?v=5b1cbf52"></script>
 <script src="brand/editions.js?v=e28bb3c6"></script>
+<script src="brand/firmware.js?v=f33af162"></script>
 <script src="brand/site.js?v=7d512b0b"></script>
 <script>
 (function () {
@@ -129,25 +130,16 @@
       go.innerHTML = '<a class="btn" aria-disabled="true" tabindex="-1">Coming soon</a><span class="msg">' + label + ". " + why + "</span>";
     }
   }
-  // Un'edizione e' installabile solo se il suo manifest e' sul sito (02_EDIZIONI/strumenti/porta_nel_sito.sh lo crea;
-  // online i file non vengono pubblicati finche' il codice sorgente non e' su GitHub).
-  var avail = {}, checked = false;
-  form.addEventListener("change", render); render();
-  Promise.all(E.map(function (e) {
-    return Promise.all(["en", "it"].map(function (l) {
-      return fetch("manifest-" + e.id + "-" + l + ".json", { method: "HEAD", cache: "no-store" })
-        .then(function (r) { avail[e.id + "-" + l] = r.ok; }).catch(function () {});
-    }));
-  })).then(function () {
-    checked = true;
-    var any = Object.keys(avail).some(function (k) { return avail[k]; });
-    document.getElementById("not-open").hidden = any;
-    document.querySelectorAll('input[name="edition"]').forEach(function (i) {
-      var on = avail[i.value + "-en"] || avail[i.value + "-it"];
-      var sm = i.parentNode.querySelector("small"); if (sm) sm.textContent = on ? "Available" : "Coming soon";
-    });
-    render();
+  // Un'edizione e' installabile solo se compare in brand/firmware.js (lo scrive 02_EDIZIONI/strumenti/porta_nel_sito.sh;
+  // online la lista e' vuota finche' il codice sorgente non e' su GitHub e i file non vengono pubblicati).
+  var avail = {}, checked = true;
+  (window.IM_FIRMWARE || []).forEach(function (k) { avail[k] = true; });
+  document.getElementById("not-open").hidden = Object.keys(avail).length > 0;
+  document.querySelectorAll('input[name="edition"]').forEach(function (i) {
+    var on = avail[i.value + "-en"] || avail[i.value + "-it"];
+    var sm = i.parentNode.querySelector("small"); if (sm) sm.textContent = on ? "Available" : "Coming soon";
   });
+  form.addEventListener("change", render); render();
 })();
 </script>
 </body>
